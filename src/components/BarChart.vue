@@ -1,11 +1,15 @@
 <template>
-  <div id="barchart">
-    <h5> Character Occurrences and Sentiments</h5>
-  </div>
+<div id="barchart-container">
+  <h5> Character Occurrences and Sentiments</h5>
+  <div id="barchart"></div>
+  <BarChartLegend/>
+</div>
 </template>
 
 <script>
 import * as d3 from "d3";
+import BarChartLegend from "@/components/BarChartLegend"
+
 import Amalia from "@/data/barcharts/Amalia Ivanovna.json";
 import Dmitri from "@/data/barcharts/Dmitri Prokofitch.json";
 import Ilya from "@/data/barcharts/Ilya Petrovitch.json";
@@ -24,7 +28,7 @@ import Sonia from "@/data/barcharts/Sonia.json";
 
 
 export default {
-  components: {},
+  components: {BarChartLegend},
   mounted() {
     this.init(Amalia, "Amalia Ivanovna");
     this.init(Dmitri, "Dmitri Prokofitch");
@@ -110,37 +114,40 @@ export default {
             return d.Color;
           })
 
-      // svg.selectAll("chapter-number")
-      // .data(data)
-      // .enter()
-      // .append("text")
-      // .attr("class", "chapter-number")
-      // .text(function(d) {
-      //   return "C"+d.Chapter.slice(8); //remove "Chapter ", take only chapter number
-      // })
-      //   .attr("text-anchor", "end")
-      //   .attr("fill", "black")
-      //   .style("font-size", "12px")
-      //   // .attr("transform", "translate(" + 0 + "," + 20 + ")")
-      //   .attr("x", function(d, i) {
-      //       return i * (width / data.length) + 1;
+      //Add Chapter legend
+      // const legendChapters = ["1", "6", "11", "16", "21", "26", "31", "36", "38"]
+      // const isFirstSegment = (d) => {
+      //   const segmentsOfChapter = data.filter(item => item.Chapter === d.Chapter);
+      //   const firstSegmentOfChapter = segmentsOfChapter[0] 
+      //   return d.Segment === firstSegmentOfChapter.Segment;
+      // } 
+      // const countSegmentsOfChapter = (d) => {
+      //   return data.filter(item => item.Chapter === d.Chapter).length;
+      // }
+      // const nrSegmentsPerChapter = []
+      // for (const chapter in fakeChar){
+      //   nrSegmentsPerChapter.push(fakeChar[chapter].length)
+      // }
+      
+      // if(name === "Chapter") {
+      //   svg.selectAll("chapter-number")
+      //   .data(data)
+      //   .enter()
+      //   .append("text")
+      //   .attr("class", "chapter-number")
+      //   .text(function(d) {
+      //     return legendChapters.includes(d.Chapter.slice(8)) && isFirstSegment(d) ? d.Chapter.slice(8) : ""; //remove "Chapter ", take only chapter number
       //   })
-      //   .attr("y", function(d) {
-      //       // return height - (d * 4);
-      //       return height - y(d.Value) - 1;
-      //   });
-
-      // this.bubbles.append('text')
-      //           .attr("class", "bubble-label")
-      //           .attr("x", function(d) {return xScale(d.x)})
-      //           .attr("y", function(d) {return d.count < 1200 ? yScale(d.y) - 22 
-      //                                                         : d.count > 2000 ? yScale(d.y) - 30
-      //                                                         : yScale(d.y) - 28}) //https://jonathansoma.com/lede/storytelling/d3/text-elements/ for difference between attr "x"/"y" and "dx"/"dy"
-      //           .attr("text-anchor", "middle")
-      //           .style("font-size", "12px")
-      //           .text(d => topicNames[this.data_chart.indexOf(d)+1])
-      //           .on("click", (event, d) => this.onChange(event, this.data_chart.indexOf(d)+1));
-
+      //     .attr("text-anchor", "end")
+      //     .attr("fill", "black")
+      //     .style("font-size", "12px")
+      //     .attr("x", function(d) {
+      //         return x(d.Segment) + x.bandwidth()*countSegmentsOfChapter(d) + x.bandwidth();
+      //     })
+      //     .attr("y", function(d) {
+      //         return height - y(d.Value) - 2;
+      //     });
+      // }
     }
 
   }
