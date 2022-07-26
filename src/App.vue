@@ -6,7 +6,7 @@
       </div>
     </div>
     <h3>Overview on General Information & Book Statistics</h3>
-    <div id="main1"><img :src="cover" :width="200" :height="200"/>
+    <div id="main1"><img :src="cover" :width="150" :height="150"/>
       <div id="textinfo">
         <div id="list1">
           <ul>
@@ -136,6 +136,14 @@ h3 {
   margin-bottom: 0px;
 }
 
+h4 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+h5 {
+  margin: 0 auto 10px auto;
+}
 
 #main1 {
   display: grid;
