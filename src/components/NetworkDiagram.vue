@@ -22,7 +22,6 @@ export default {
     characterKey: {
       deep: true,
       handler() {
-        // console.log(this.characterKey)
         this.initWordCloud()
       }
 
@@ -31,7 +30,6 @@ export default {
   methods: {
 
     onChange(event, name, color) {
-      // this.$emit("changeCharacter", data)
       this.$emit("changeCharacter", {charName: name, charColor: color})
     },
 
@@ -49,9 +47,6 @@ export default {
               `translate(${margin.left}, ${margin.top})`);
 
       const data = cooccurrences;
-      // console.log("Data", data)
-
-      // console.log(data.links.index)
 
       /* eslint-disable */
 
@@ -88,7 +83,6 @@ export default {
           .attr("stroke", function (d) {
             return d.color;
           })
-      //.attr("stroke-width", strokeWidth);//Define a scale for stroke width or stroke opacity!
 
       let node = svg.append("g")
           .attr("class", "nodes")
